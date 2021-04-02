@@ -1,0 +1,4 @@
+# File/folders to ignore
+
+node_modules
+.env
