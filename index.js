@@ -5,7 +5,13 @@ const indexRouter = require('./routes/index');
 
 // Create app and add middlewares
 var app = express();
+
+// onfigure ejs and static css
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
+
 app.use(cors())
+
 
 // Permite sacar POST params
 var bodyParser = require('body-parser');
