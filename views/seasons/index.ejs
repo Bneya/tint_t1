@@ -1,6 +1,6 @@
 <head>
   <title>IMBD Ripoff</title>
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <!-- <link rel="stylesheet" type="text/css" href="css/styles.css"> -->
 </head>
 
 <table>
@@ -12,4 +12,10 @@
     <td>Cosa3</td>
     <td>Cosa4</td>
   </tr>
+  <% episodes.forEach(ep => { %>
+    <tr>
+      <td><%= ep.episode_id %></td>
+      <td><%= ep.title %></td>
+    </tr>
+  <% })%>
 </table>

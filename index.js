@@ -2,6 +2,8 @@ var express = require('express');
 const https = require('https');
 const cors = require('cors');
 const indexRouter = require('./routes/index');
+const axios = require('axios');
+// import './styles.css';
 
 // Create app and add middlewares
 var app = express();
@@ -11,6 +13,18 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 app.use(cors())
+
+// Mostrando interfaz de axios para todas las requests
+const axiosInstance = axios.create({
+  baseURL: 'https://tarea-1-breaking-bad.herokuapp.com/api'
+})
+
+app.use((req, res, next) => {
+  // console.log("req", req);
+  req.axiosInstance = axiosInstance;
+
+  return next();
+});
 
 
 // Permite sacar POST params
