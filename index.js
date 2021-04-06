@@ -49,7 +49,8 @@ require('dotenv').config();
 
 // Home route
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+  // res.send('Hello World!');
+  res.redirect('/seasons');
 });
 
 const port = process.env.PORT || 3000
