@@ -12,29 +12,34 @@
 <div class="container">
   <h2>Simple Collapsible</h2>
   <p>Click on the button to toggle between showing and hiding content.</p>
-  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
-  <div id="demo" class="collapse">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-    <table>
-      <tr>
-        <td>Cosa1</td>
-        <td>Cosa2</td>
-      </tr>
-      <tr>
-        <td>Cosa3</td>
-        <td>Cosa4</td>
-      </tr>
-      <% ep_bb.forEach(ep => { %>
-        <tr>
-          <td><%= ep.episode_id %></td>
-          <td><%= ep.title %></td>
-        </tr>
+      <% seasons_bb.forEach(season => { %>
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#season-<%= season.season_num %>">Season <%= season.season_num %></button>
+
+        <!-- Div que se esconde con cada botón -->
+        <div id="season-<%= season.season_num %>" class="collapse">
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Episode Number</th>
+                <th scope="col">Episode Title</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% season.season_eps.forEach(ep => { %>
+              <tr>
+                <th scope="row"><%= ep.episode %></th>
+                <td><%= ep.title %></td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+
+        </div>
+
         <% })%>
-      </table>
-  </div>
+
 </div>
 
 </body>
