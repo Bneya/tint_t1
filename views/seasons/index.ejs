@@ -28,7 +28,7 @@
             </thead>
             <tbody>
               <% season.season_eps.forEach(ep => { %>
-              <tr>
+              <tr onclick="window.location='/episodes'">
                 <th scope="row"><%= ep.episode %></th>
                 <td><%= ep.title %></td>
               </tr>
