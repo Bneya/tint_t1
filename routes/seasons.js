@@ -14,7 +14,7 @@ router.get(`/`, async function (req, res) {
   console.log('episodes', episodes);
   // console.log("cosa prueba", req.prueba);
   res.render('seasons/index.ejs', {
-    episodes: episodes.data,
+    episodes: episodes,
   });
 })
 

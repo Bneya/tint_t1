@@ -16,8 +16,17 @@ app.use(cors())
 
 // Mostrando interfaz de axios para todas las requests
 const axiosInstance = axios.create({
-  baseURL: 'https://tarea-1-breaking-bad.herokuapp.com/api'
+  baseURL: 'https://tarea-1-breaking-bad.herokuapp.com/api',
 })
+
+// Modificador de respuesta
+const responseHandler = (response) => {
+  return response.data;
+}
+
+axiosInstance.interceptors.response.use(responseHandler, (error) =>
+  Promise.reject(error),
+)
 
 app.use((req, res, next) => {
   // console.log("req", req);
