@@ -16,7 +16,7 @@ Estos son los detalles del personaje:
   <tr>
     <td>Ocupaciones</td>
     <td>
-      <% char.ocupation.forEach(ocupation => { %>
+      <% char.occupation.forEach(ocupation => { %>
         <p><%= ocupation %></p>
       <% }) %>
     </td>
@@ -36,5 +36,21 @@ Estos son los detalles del personaje:
   <tr>
     <td>Categoría</td>
     <td><%= char.category %></td>
+  </tr>
+  <tr>
+    <td>Apariciones en Breaking Bad</td>
+    <td>
+      <% char.appearance.forEach(num => { %>
+        <p><a href="/seasons?=bb<%= num %>">Season <%= num %></a></p>
+      <% }) %>
+    </td>
+  </tr>
+  <tr>
+    <td>Apariciones en Better Call Saul</td>
+    <td>
+      <% char.better_call_saul_appearance.forEach(num => { %>
+        <p><a href="/seasons?=bcs<%= num %>">Season <%= num %></a></p>
+      <% }) %>
+    </td>
   </tr>
 </table>
