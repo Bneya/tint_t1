@@ -1,0 +1,40 @@
+Estos son los detalles del personaje:
+
+<table>
+  <tr>
+    <td>Nombre</td>
+    <td><%= char.name %></td>
+  </tr>
+  <tr>
+    <td>Nickname</td>
+    <td><%= char.nickname %></td>
+  </tr>
+  <tr>
+    <td>ID del personaje</td>
+    <td><%= char.char_id %></td>
+  </tr>
+  <tr>
+    <td>Ocupaciones</td>
+    <td>
+      <% char.ocupation.forEach(ocupation => { %>
+        <p><%= ocupation %></p>
+      <% }) %>
+    </td>
+  </tr>
+  <tr>
+    <td>Imagen</td>
+    <td><img src="<%= char.img %>" alt="<%= char.name %>.jpg"></td>
+  </tr>
+  <tr>
+    <td>Status</td>
+    <td><%= char.status %></td>
+  </tr>
+  <tr>
+    <td>Portrayed</td>
+    <td><%= char.portrayed %></td>
+  </tr>
+  <tr>
+    <td>Categoría</td>
+    <td><%= char.category %></td>
+  </tr>
+</table>

@@ -33,8 +33,7 @@ router.get(`/details`, async function (req, res) {
   ep_details.characters = transformSearchableCharacters(ep_details.characters);
   console.log('ep_details', ep_details);
 
-  // transformSearchableCharacters(ep_details.characters);
-
+  // Renerizamos la view
   res.render('episodes/details.ejs', {
     episode: ep_details,
   });
