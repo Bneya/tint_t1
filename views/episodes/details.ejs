@@ -1,5 +1,37 @@
-<div class="card card-body">
-  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
 
-  Estos son los detalles del episodio: <%= episode.episode_id %>
-</div>
+  Estos son los detalles del episodio:
+
+<table class="table table-hover">
+  <tr>
+    <td>Serie</td>
+    <td><%= episode.series %></td>
+  </tr>
+  <tr>
+    <td>Temporada</td>
+    <td><%= episode.season %></td>
+  </tr>
+  <tr>
+    <td>Número episodio en la temporada</td>
+    <td><%= episode.episode %></td>
+  </tr>
+  <tr>
+    <td>Título</td>
+    <td><%= episode.title %></td>
+  </tr>
+  <tr>
+    <td>ID de episodio</td>
+    <td><%= episode.episode_id %></td>
+  </tr>
+  <tr>
+    <td>Fecha de emisión</td>
+    <td><%= episode.air_date %></td>
+  </tr>
+  <tr>
+    <td>Personajes</td>
+    <td>
+      <% episode.characters.forEach(char => { %>
+        <p><a href="/characters/details?name=<%= char.searchableName %>"><%= char.name %></a></p>
+      <% }) %>
+    </td>
+  </tr>
+</table>
