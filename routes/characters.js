@@ -14,11 +14,16 @@ router.get(`/details`, async function (req, res) {
   let char_details = await req.axiosInstance.get(`/characters?name=${charName}`);
   char_details = char_details[0];
 
+  // Get API character quotes
+  let char_quotes = await req.axiosInstance.get(`/quote?author=${charName}`);
+  console.log('quotes', char_quotes);
+
   console.log('char_details', char_details);
 
   // Renerizamos la view
   res.render('characters/details.ejs', {
     char: char_details,
+    quotes: char_quotes,
   });
 })
 

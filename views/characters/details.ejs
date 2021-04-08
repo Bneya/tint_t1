@@ -1,4 +1,4 @@
-Estos son los detalles del personaje:
+<h1>Detalles del personaje:</h1>
 
 <table>
   <tr>
@@ -53,4 +53,17 @@ Estos son los detalles del personaje:
       <% }) %>
     </td>
   </tr>
+</table>
+
+<hr>
+
+<h1>Frases:</h1>
+
+<table>
+  <% quotes.forEach(quote => { %>
+    <tr>
+      <td style="font-style: italic">-"<%= quote.quote %>"</td>
+    </tr>
+
+  <% }) %>
 </table>
