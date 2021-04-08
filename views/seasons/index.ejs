@@ -75,5 +75,20 @@
     </div>
   </div>
 
+  <!-- Script para abrir el elemento que llegue en el url -->
+  <script type="text/javascript">
+    const url = window.location.href;
+    const splitted = url.split("=");
+    // console.log('url', url);
+    if (splitted.length === 2) {
+      const id_season = splitted[1];
+      console.log('id_season', id_season);
+      var v = document.getElementById(id_season);
+      v.classList.add("show");
+    }
+    // const season = <%= urlSeason %>;
+    // console.log('url season', season);
+  </script>
+
 </body>
 </html>

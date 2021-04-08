@@ -41,7 +41,7 @@
     <td>Apariciones en Breaking Bad</td>
     <td>
       <% char.appearance.forEach(num => { %>
-        <p><a href="/seasons?=bb<%= num %>">Season <%= num %></a></p>
+        <a href="/seasons?ss=bb-season-<%= num %>">Season <%= num %></a>
       <% }) %>
     </td>
   </tr>
@@ -49,7 +49,7 @@
     <td>Apariciones en Better Call Saul</td>
     <td>
       <% char.better_call_saul_appearance.forEach(num => { %>
-        <p><a href="/seasons?=bcs<%= num %>">Season <%= num %></a></p>
+        <a href="/seasons?ss=bcs-season-<%= num %>">Season <%= num %></a>
       <% }) %>
     </td>
   </tr>

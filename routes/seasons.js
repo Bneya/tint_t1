@@ -42,10 +42,20 @@ router.get(`/`, async function (req, res) {
   const seasons_bcs = orderSerieBySeasons(ep_bcs);
   // console.log('episodes', episodes);
   // console.log("cosa prueba", req.prueba);
-  res.render('seasons/index.ejs', {
+
+  // Abre el div recibido en urlParams
+  const urlSeason = 'bb-season-3';
+
+
+  await res.render('seasons/index.ejs', {
     seasons_bcs,
     seasons_bb,
+    urlSeason
   });
+
+  console.log("Después del render...");
+  // var v = document.getElementById(urlSeason);
+  // v.classList.add("show");
 })
 
 module.exports = router;
