@@ -1,0 +1,19 @@
+Estamos en la página de search
+
+<% if (char_num === 0) { %>
+  No hay resultados para mostrar
+<% } else { %>
+  Resultados...
+  <table>
+    <tr>
+      <th>Serie</th>
+      <th>Personaje</th>
+    </tr>
+    <% char_list.forEach(char => { %>
+      <tr>
+        <td><%= char.category %></td>
+        <td><a href="/characters/details?name=<%= char.searchableName %>"><%= char.name %></a></td>
+      </tr>
+    <% }) %>
+  </table>
+<% } %>
