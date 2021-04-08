@@ -39,10 +39,11 @@ router.get(`/`, async function (req, res) {
   const ep_bb = await req.axiosInstance.get('/episodes?series=Breaking+Bad');
 
   const seasons_bb = orderSerieBySeasons(ep_bb);
+  const seasons_bcs = orderSerieBySeasons(ep_bcs);
   // console.log('episodes', episodes);
   // console.log("cosa prueba", req.prueba);
   res.render('seasons/index.ejs', {
-    ep_bcs,
+    seasons_bcs,
     seasons_bb,
   });
 })
