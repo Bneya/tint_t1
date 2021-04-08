@@ -7,6 +7,11 @@ router.get(`/`, function (req, res) {
   res.send('Hello characters!');
 })
 
+router.post(`/search`, function (req, res) {
+  console.log("estamos en charsearch");
+  res.redirect("/characters/details?name=Saul+Goodman")
+})
+
 router.get(`/details`, async function (req, res) {
   const charName = req.query.name;
 
