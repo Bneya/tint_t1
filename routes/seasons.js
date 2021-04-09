@@ -26,36 +26,24 @@ function orderSerieBySeasons(serieObj) {
     returnObjList.push(subObj);
   });
 
-
-  console.log('orderedObj', returnObjList);
   return returnObjList
 
 }
 
 // Todas las rutas de esta categoría
 router.get(`/`, async function (req, res) {
-  // res.send('Hello seasons!');
+
   const ep_bcs = await req.axiosInstance.get('/episodes?series=Better+Call+Saul');
   const ep_bb = await req.axiosInstance.get('/episodes?series=Breaking+Bad');
 
   const seasons_bb = orderSerieBySeasons(ep_bb);
   const seasons_bcs = orderSerieBySeasons(ep_bcs);
-  // console.log('episodes', episodes);
-  // console.log("cosa prueba", req.prueba);
-
-  // Abre el div recibido en urlParams
-  const urlSeason = 'bb-season-3';
-
 
   await res.render('seasons/index.ejs', {
     seasons_bcs,
     seasons_bb,
-    urlSeason
   });
 
-  console.log("Después del render...");
-  // var v = document.getElementById(urlSeason);
-  // v.classList.add("show");
 })
 
 module.exports = router;

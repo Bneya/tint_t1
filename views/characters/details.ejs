@@ -1,142 +1,79 @@
 <%- include('../shared/styles')%>
 <%- include('../shared/searchbar')%>
 
-<!-- <h1>Detalles del personaje:</h1>
-
-<table class="table table-hover">
-  <tr>
-    <td>Nombre</td>
-    <td><%= char.name %></td>
-  </tr>
-  <tr>
-    <td>Nickname</td>
-    <td><%= char.nickname %></td>
-  </tr>
-  <tr>
-    <td>ID del personaje</td>
-    <td><%= char.char_id %></td>
-  </tr>
-  <tr>
-    <td>Ocupaciones</td>
-    <td>
-      <% char.occupation.forEach(ocupation => { %>
-        <p><%= ocupation %></p>
-      <% }) %>
-    </td>
-  </tr>
-  <tr>
-    <td>Imagen</td>
-    <td><img src="<%= char.img %>" alt="<%= char.name %>.jpg"></td>
-  </tr>
-  <tr>
-    <td>Status</td>
-    <td><%= char.status %></td>
-  </tr>
-  <tr>
-    <td>Portrayed</td>
-    <td><%= char.portrayed %></td>
-  </tr>
-  <tr>
-    <td>Categoría</td>
-    <td><%= char.category %></td>
-  </tr>
-  <tr>
-    <td>Apariciones en Breaking Bad</td>
-    <td>
-      <% char.appearance.forEach(num => { %>
-        <a href="/seasons?ss=bb-season-<%= num %>">Season <%= num %></a>
-      <% }) %>
-    </td>
-  </tr>
-  <tr>
-    <td>Apariciones en Better Call Saul</td>
-    <td>
-      <% char.better_call_saul_appearance.forEach(num => { %>
-        <a href="/seasons?ss=bcs-season-<%= num %>">Season <%= num %></a>
-      <% }) %>
-    </td>
-  </tr>
-</table>
-
-<hr>
-
-<h1>Frases:</h1>
-
-<table>
-  <% quotes.forEach(quote => { %>
-    <tr>
-      <td style="font-style: italic">-"<%= quote.quote %>"</td>
-    </tr>
-
-  <% }) %>
-</table> -->
-
 
 <div class="card" style="margin-left: 25%; width: 50%; margin-top: 15px">
   <div class="card-header">
     Detalles del personaje
   </div>
-  <img class="card-img-top" src="<%= char.img %>" alt="Image">
-  <div class="card-body">
-    <h5 class="card-title"><%= char.name %></h5>
-    <table class="table table-hover">
-      <tr>
-        <td>Nickname</td>
-        <td><%= char.nickname %></td>
-      </tr>
-      <tr>
-        <td>ID del personaje</td>
-        <td><%= char.char_id %></td>
-      </tr>
-      <tr>
-        <td>Ocupaciones</td>
-        <td>
-          <% char.occupation.forEach(ocupation => { %>
-            <p><%= ocupation %></p>
-          <% }) %>
-        </td>
-      </tr>
-      <tr>
-        <td>Status</td>
-        <td><%= char.status %></td>
-      </tr>
-      <tr>
-        <td>Portrayed</td>
-        <td><%= char.portrayed %></td>
-      </tr>
-      <tr>
-        <td>Categoría</td>
-        <td><%= char.category %></td>
-      </tr>
-      <tr>
-        <td>Apariciones en Breaking Bad</td>
-        <td>
-          <% char.appearance.forEach(num => { %>
-            <div ><a href="/seasons?ss=bb-season-<%= num %>">Season <%= num %></a></div>
-          <% }) %>
-        </td>
-      </tr>
-      <tr>
-        <td>Apariciones en Better Call Saul</td>
-        <td>
-          <% if (char.better_call_saul_appearance.length === 0) { %> Ninguna <% }%>
-          <% char.better_call_saul_appearance.forEach(num => { %>
-            <a href="/seasons?ss=bcs-season-<%= num %>">Season <%= num %></a>
-          <% }) %>
-        </td>
-      </tr>
-      <tr>
-        <td>Frases</td>
-        <td>
-          <% if (quotes.length === 0) { %> Ninguna <% }%>
-          <ul>
-            <% quotes.forEach(quote => { %>
-                <li><div style="font-style: italic">"<%= quote.quote %>"</div></li>
-            <% }) %>
-          </ul>
+  <% if (char === undefined) { %>
+    <h5 class="card-title" style="margin: 15px;">No se encontró información del personaje especificado</h5>
+  <% } else { %>
+    <img class="card-img-top" src="<%= char ? char.img : '' %>" alt="Image">
+    <div class="card-body">
 
-        </td>
-      </tr>
-    </table>
+      <h5 class="card-title"><%= char.name %></h5>
+      <table class="table table-hover">
+        <tr>
+          <td>Nickname</td>
+          <td><%= char.nickname %></td>
+        </tr>
+        <tr>
+          <td>ID del personaje</td>
+          <td><%= char.char_id %></td>
+        </tr>
+        <tr>
+          <td>Ocupaciones</td>
+          <td>
+            <% char.occupation.forEach(ocupation => { %>
+              <p><%= ocupation %></p>
+            <% }) %>
+          </td>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td><%= char.status %></td>
+        </tr>
+        <tr>
+          <td>Portrayed</td>
+          <td><%= char.portrayed %></td>
+        </tr>
+        <tr>
+          <td>Categoría</td>
+          <td><%= char.category %></td>
+        </tr>
+        <tr>
+          <td>Apariciones en Breaking Bad</td>
+          <td>
+            <% if (char.appearance.length === 0) { %> Ninguna <% }%>
+            <% char.appearance.forEach(num => { %>
+              <div><a href="/seasons?ss=bb-season-<%= num %>">Season <%= num %></a></div>
+            <% }) %>
+          </td>
+        </tr>
+        <tr>
+          <td>Apariciones en Better Call Saul</td>
+          <td>
+            <% if (char.better_call_saul_appearance.length === 0) { %> Ninguna <% }%>
+            <% char.better_call_saul_appearance.forEach(num => { %>
+              <div class=""><a href="/seasons?ss=bcs-season-<%= num %>">Season <%= num %></a></div>
+            <% }) %>
+          </td>
+        </tr>
+        <tr>
+          <td>Frases</td>
+          <td>
+            <% if (quotes.length === 0) { %> Ninguna <% }%>
+            <ul>
+              <% quotes.forEach(quote => { %>
+                  <li><div style="font-style: italic">"<%= quote.quote %>"</div></li>
+              <% }) %>
+            </ul>
+
+          </td>
+        </tr>
+      </table>
+    <% } %>
+
   </div>
 </div>

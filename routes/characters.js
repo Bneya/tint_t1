@@ -63,9 +63,6 @@ router.get(`/details`, async function (req, res) {
 
   // Get API character quotes
   let char_quotes = await req.axiosInstance.get(`/quote?author=${charName}`);
-  console.log('quotes', char_quotes);
-
-  console.log('char_details', char_details);
 
   // Renerizamos la view
   res.render('characters/details.ejs', {

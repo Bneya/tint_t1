@@ -14,7 +14,6 @@ function transformSearchableCharacters(charArray){
     searchableArray.push(searchableChar)
   });
 
-  // console.log(searchableArray);
   return searchableArray;
 }
 
@@ -24,14 +23,13 @@ router.get(`/`, function (req, res) {
 })
 
 router.get(`/details`, async function (req, res) {
-  console.log('req.params', req.query);
+
   const ep_id = req.query.id;
 
   // Obtiene detalles del episodio
   let ep_details = await req.axiosInstance.get(`/episodes/${ep_id}`);
   ep_details = ep_details[0];
   ep_details.characters = transformSearchableCharacters(ep_details.characters);
-  console.log('ep_details', ep_details);
 
   // Renerizamos la view
   res.render('episodes/details.ejs', {
