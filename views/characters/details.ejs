@@ -129,9 +129,12 @@
         <td>Frases</td>
         <td>
           <% if (quotes.length === 0) { %> Ninguna <% }%>
-          <% quotes.forEach(quote => { %>
-              <div style="font-style: italic">-<%= quote.quote %>"</div>
-          <% }) %>
+          <ul>
+            <% quotes.forEach(quote => { %>
+                <li><div style="font-style: italic">"<%= quote.quote %>"</div></li>
+            <% }) %>
+          </ul>
+
         </td>
       </tr>
     </table>

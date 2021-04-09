@@ -1,19 +1,27 @@
-Estamos en la página de search
 
-<% if (char_num === 0) { %>
-  No hay resultados para mostrar
-<% } else { %>
-  Resultados...
-  <table>
-    <tr>
-      <th>Serie</th>
-      <th>Personaje</th>
-    </tr>
-    <% char_list.forEach(char => { %>
-      <tr>
-        <td><%= char.category %></td>
-        <td><a href="/characters/details?name=<%= char.searchableName %>"><%= char.name %></a></td>
-      </tr>
-    <% }) %>
-  </table>
-<% } %>
+<%- include('../shared/styles')%>
+<%- include('../shared/searchbar')%>
+
+<div class="card" style="margin-left: 25%; width: 50%; margin-top: 15px">
+  <div class="card-header">
+    Resultados de la búsqueda:
+  </div>
+  <div class="card-body">
+    <% if (char_num === 0) { %>
+      No hay resultados para mostrar
+    <% } else { %>
+      <table class="table table-hover">
+        <tr>
+          <th>Serie</th>
+          <th>Personaje</th>
+        </tr>
+        <% char_list.forEach(char => { %>
+          <tr>
+            <td><%= char.category %></td>
+            <td><a href="/characters/details?name=<%= char.searchableName %>"><%= char.name %></a></td>
+          </tr>
+        <% }) %>
+      </table>
+    <% } %>
+  </div>
+</div>
