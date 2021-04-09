@@ -7,11 +7,6 @@ function makeSearchable(charArray){
   const searchableArray = [];
   const spaceyRegex = /\s+/g;
   charArray.forEach((char) => {
-    // const searchableChar = {
-    //   name: char,
-    //   searchableName: char.replace(spaceyRegex, "+")
-    // };
-    // searchableArray.push(searchableChar)
     char.searchableName = char.name.replace(spaceyRegex, "+")
   });
 
@@ -33,8 +28,6 @@ router.post(`/search`, async function (req, res) {
 
   char_list = makeSearchable(char_list);
 
-  console.log('char_list', char_list);
-  console.log('char_num', char_list.length);
   res.render("characters/search", {
     char_list,
     char_num: char_list.length,
