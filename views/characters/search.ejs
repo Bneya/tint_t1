@@ -8,7 +8,7 @@
   </div>
   <div class="card-body">
     <% if (char_num === 0) { %>
-      No hay resultados para mostrar
+      <p>No hay resultados para mostrar</p>
     <% } else { %>
       <table class="table table-hover">
         <tr>
@@ -23,5 +23,8 @@
         <% }) %>
       </table>
     <% } %>
+
+    <a href="/characters/search?name=<%= name %>&page=<%= prevPage %>" class="btn btn-primary">Página previa</a>
+    <a href="/characters/search?name=<%= name %>&page=<%= nextPage %>" class="btn btn-primary">Página siguiente</a>
   </div>
 </div>

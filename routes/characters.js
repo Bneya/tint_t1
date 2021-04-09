@@ -31,16 +31,24 @@ router.post(`/search`, async function (req, res) {
 
 router.get(`/search`, async function (req, res) {
 
-  // Busca en la API todos los resultados pertinentes y procésalos
+  // Obtén y procesa los parámetros recibidos
   const name = req.query.name;
+  const currPage = req.query.page ? parseInt(req.query.page) : 1;
+  const prevPage = (currPage - 1) > 0 ? (currPage - 1) : 1;
+  const nextPage = (currPage + 1);
+  const offset = (currPage - 1) * 10;
+
+  // Busca en la API todos los resultados pertinentes y procésalos
   const spaceyRegex = /\s+/g;
   const searchableName = name.trim().replace(spaceyRegex, "+");
-  let char_list = await req.axiosInstance.get(`/characters?name=${searchableName}`);
+  let char_list = await req.axiosInstance.get(`/characters?name=${searchableName}&limit=3&offset=${offset}`);
 
   char_list = makeSearchable(char_list);
 
   res.render("characters/search", {
     name,
+    prevPage,
+    nextPage,
     char_list,
     char_num: char_list.length,
   });
