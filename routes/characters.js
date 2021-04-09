@@ -20,8 +20,19 @@ router.get(`/`, function (req, res) {
 
 router.post(`/search`, async function (req, res) {
 
-  // Busca en la API todos los resultados pertinentes y procésalos
+  // Redirects to GET page
   const name = req.body.name;
+  const spaceyRegex = /\s+/g;
+  const searchableName = name.trim().replace(spaceyRegex, "+");
+
+  const formedLink = `/characters/search?name=${searchableName}`
+  res.redirect(formedLink)
+})
+
+router.get(`/search`, async function (req, res) {
+
+  // Busca en la API todos los resultados pertinentes y procésalos
+  const name = req.query.name;
   const spaceyRegex = /\s+/g;
   const searchableName = name.trim().replace(spaceyRegex, "+");
   let char_list = await req.axiosInstance.get(`/characters?name=${searchableName}`);
