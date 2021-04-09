@@ -40,6 +40,7 @@ router.get(`/search`, async function (req, res) {
   char_list = makeSearchable(char_list);
 
   res.render("characters/search", {
+    name,
     char_list,
     char_num: char_list.length,
   });
