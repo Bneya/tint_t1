@@ -112,7 +112,7 @@
         <td>Apariciones en Breaking Bad</td>
         <td>
           <% char.appearance.forEach(num => { %>
-            <a href="/seasons?ss=bb-season-<%= num %>">Season <%= num %></a>
+            <div ><a href="/seasons?ss=bb-season-<%= num %>">Season <%= num %></a></div>
           <% }) %>
         </td>
       </tr>
@@ -128,11 +128,9 @@
       <tr>
         <td>Frases</td>
         <td>
+          <% if (quotes.length === 0) { %> Ninguna <% }%>
           <% quotes.forEach(quote => { %>
-
               <div style="font-style: italic">-<%= quote.quote %>"</div>
-
-
           <% }) %>
         </td>
       </tr>
