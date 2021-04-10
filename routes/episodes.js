@@ -1,4 +1,5 @@
 var express = require('express');
+var moment = require('moment');
 
 const router = express.Router();
 
@@ -30,6 +31,7 @@ router.get(`/details`, async function (req, res) {
   let ep_details = await req.axiosInstance.get(`/episodes/${ep_id}`);
   ep_details = ep_details[0];
   ep_details.characters = transformSearchableCharacters(ep_details.characters);
+  ep_details.air_date = moment(ep_details.air_date).locale('es').format(`DD [ de ] MMMM [ de ] YYYY`);
 
   // Renerizamos la view
   res.render('episodes/details.ejs', {

@@ -20,7 +20,15 @@
       <h2>Temporadas Breaking Bag</h2>
 
           <% seasons_bb.forEach(season => { %>
-            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#bb-season-<%= season.season_num %>">Season <%= season.season_num %></button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="collapse"
+              data-target="#bb-season-<%= season.season_num %>"
+              style="margin-bottom: 15px; margin-left: 10%; margin-rigth: 10%; width: 80%"
+            >
+              Season <%= season.season_num %>
+            </button>
 
             <!-- Div que se esconde con cada botón -->
             <div id="bb-season-<%= season.season_num %>" class="collapse">
@@ -53,7 +61,15 @@
       <h2>Temporadas Better Call Saul</h2>
 
           <% seasons_bcs.forEach(season => { %>
-            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#bcs-season-<%= season.season_num %>">Season <%= season.season_num %></button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="collapse"
+              data-target="#bcs-season-<%= season.season_num %>"
+              style="margin-bottom: 15px; margin-left: 10%; margin-rigth: 10%; width: 80%"
+            >
+              Season <%= season.season_num %>
+            </button>
 
             <!-- Div que se esconde con cada botón -->
             <div id="bcs-season-<%= season.season_num %>" class="collapse">
@@ -83,7 +99,7 @@
 
   <!-- Script para abrir el elemento que llegue en el url -->
   <script type="text/javascript">
-    
+
     const url = window.location.href;
     const splitted = url.split("=");
 
