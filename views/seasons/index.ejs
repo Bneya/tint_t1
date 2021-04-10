@@ -83,7 +83,7 @@
                 </thead>
                 <tbody>
                   <% season.season_eps.forEach(ep => { %>
-                  <tr onclick="window.location='/episodes/details?id=<%= ep.episode_id %>'">
+                  <tr onclick="window.location='/episodes/details?id=<%= ep.episode_id %>'" class="hover-mouse">
                     <th scope="row"><%= ep.episode %></th>
                     <td><%= ep.title %></td>
                   </tr>
